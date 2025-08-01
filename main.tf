@@ -13,6 +13,7 @@ terraform {
     # This is the S3 bucket used for remote state storage
   }
 }
+
 provider "aws" {
   region = var.auth.region
 
