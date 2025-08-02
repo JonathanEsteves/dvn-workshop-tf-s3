@@ -47,7 +47,7 @@ This project solves the "chicken and egg" problem of needing infrastructure to m
 │                                                             │
 │  ┌─────────────────────────────────────────────────────┐    │
 │  │                    S3 Bucket                        │    │
-│  │  workshop-s3-remote-backend-bucket-471112511203     │    │
+│  │  workshop-s3-remote-backend-bucket-     │    │
 │  │                                                     │    │
 │  │  ├── networking-stack/                              │    │
 │  │  │   └── terraform.tfstate                          │    │
@@ -173,7 +173,7 @@ The project comes with sensible defaults for the DevOps na Nuvem Workshop:
 
 ```hcl
 # S3 Bucket for state storage
-s3_bucket = "workshop-s3-remote-backend-bucket-471112511203"
+s3_bucket = "workshop-s3-remote-backend-bucket"
 
 # DynamoDB table for state locking
 dynamodb_table_name = "workshop-s3-state-locking-table"
@@ -182,7 +182,7 @@ hash_key = "LockID"
 
 # AWS Configuration
 region = "us-west-1"
-assume_role_arn = "arn:aws:iam::471112511203:role/dvn-workshop-role"
+assume_role_arn = ""
 ```
 
 ### Customization
@@ -219,7 +219,7 @@ To adapt this for your own use:
 
 | Feature | Configuration | Purpose |
 |---------|---------------|---------|
-| **Bucket Name** | `workshop-s3-remote-backend-bucket-471112511203` | Unique identifier for state storage |
+| **Bucket Name** | `workshop-s3-remote-backend-bucket` | Unique identifier for state storage |
 | **Versioning** | Enabled | Track state file changes and enable rollbacks |
 | **Encryption** | Server-side (default) | Protect state files at rest |
 | **Access Control** | IAM-based | Secure access to state files |
@@ -256,8 +256,8 @@ After deployment, other Terraform projects can use this backend:
 ```hcl
 terraform {
   backend "s3" {
-    bucket         = "workshop-s3-remote-backend-bucket-471112511203"
-    key            = "your-project/terraform.tfstate"
+    bucket         = "workshop-s3-remote-backend-bucke"
+    remote-backend-bucket-/terraform.tfstate"
     region         = "us-west-1"
     dynamodb_table = "workshop-s3-state-locking-table"
     encrypt        = true
